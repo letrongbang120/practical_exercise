@@ -1,0 +1,12 @@
+pkgname="orm"
+no-tests="true"
+output="internal/databases/orm"
+[psql]
+  dbname="practical_exercise"
+  host="localhost"
+  port=5432
+  user="postgres"
+  pass="bang"
+  sslmode="disable"
+  blacklist=["schema_migrations"]
+  schema="public"
