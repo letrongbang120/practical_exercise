@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"net/http"
@@ -6,6 +6,7 @@ import (
 	"practical_exercise/internal/configs"
 	"practical_exercise/internal/databases"
 	"practical_exercise/internal/databases/student"
+	"practical_exercise/internal/services"
 
 	"github.com/rs/zerolog/log"
 )
@@ -21,7 +22,11 @@ func main() {
 		DBconn:  db,
 	}
 
-	r := routes.Routes()
+	serviceContainer := services.Container{
+		Student: services.NewUser(dbStore),
+	}
+
+	r := routes.Routes(serviceContainer)
 
 	log.Info().Msg("Server is starting at port 8080")
 	http.ListenAndServe(":8080", r)

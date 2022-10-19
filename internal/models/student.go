@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/volatiletech/null/v8"
+)
 
 type Student struct {
 	Id        string
@@ -9,6 +13,6 @@ type Student struct {
 	Email     string
 	Pass      string
 	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt time.Time
+	UpdatedAt null.Time
+	DeletedAt null.Time
 }
